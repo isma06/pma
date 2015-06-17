@@ -2,9 +2,7 @@ package demo.model;
 
 import javax.persistence.*;
 
-/**
- * Created by poo2 on 17/06/2015.
- */
+
 @Entity
 @PrimaryKeyJoinColumn (name= "id") // con esto le decimos que su primary key sera la de su clase base EMPLOYEE.
 public class Developer extends Employee {

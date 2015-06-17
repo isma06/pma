@@ -8,9 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
-/**
- * Created by poo2 on 17/06/2015.
- */
+
 @Service
 public class DeveloperService {
     @Autowired
@@ -47,5 +45,9 @@ public class DeveloperService {
         developerRepository.save(senior);
         developerRepository.save(architect);
 
+
+        Developer jun ;
+        jun= developerRepository.findByCategory(Category.JUNIOR).get(0);
+        System.out.println(jun.toString());
     }
 }

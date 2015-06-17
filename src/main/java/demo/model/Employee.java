@@ -3,9 +3,7 @@ package demo.model;
 import javax.persistence.*;
 import java.util.Date;
 
-/**
- * Created by poo2 on 15/06/2015.
- */
+
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED) // con esto le indicamos que es la super clase donde van a heridar las otras clase.
 public class Employee {
