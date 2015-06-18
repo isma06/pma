@@ -3,6 +3,8 @@ package demo.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by poo2 on 17/06/2015.
@@ -32,8 +34,10 @@ public class Project {
 
 
     @ManyToOne
-
     private Manager manager;
+
+    @ManyToMany
+    private Set<Developer> developers = new HashSet<>();
 
     public Project() {
     }
@@ -69,6 +73,10 @@ public class Project {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+    public Set<Developer> getDevelopers() {
+        return developers;
     }
 
     @Override

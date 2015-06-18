@@ -1,6 +1,8 @@
 package demo.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -11,7 +13,19 @@ public class Developer extends Employee {
     @Enumerated(EnumType.STRING) // decir que este campo es un ENUM de tipo STRING.
     private Category category;
 
+    @ManyToMany(mappedBy = "developers")
+    private Set<Project> projects = new HashSet<>();
+
+    public void setProjects(Set<Project> projects) {
+        this.projects = projects;
+    }
+
+    public Set<Project> getProjects() {
+        return projects;
+    }
+
     public Developer(){
+
 
     }
 

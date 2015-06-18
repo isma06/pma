@@ -1,7 +1,9 @@
 package demo.service;
 
+import demo.model.Developer;
 import demo.model.Manager;
 import demo.model.Project;
+import demo.repository.DeveloperRespository;
 import demo.repository.ManagerRepository;
 import demo.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +21,8 @@ public class ProjectService {
     private ProjectRepository projectRepository;
     @Autowired
     ManagerRepository managerRepository;
-
+    @Autowired
+    DeveloperRespository developerRespository;
 
     public void testProject() {
         Project project;
@@ -29,15 +32,12 @@ public class ProjectService {
         project.setEndDate(new Date());
 
 
-        Manager manager1; /*
-        manager1 = new Manager();
-        manager1.setName("Manager1");
-        manager1.setSurname("Cal");
-        manager1.setSalary(31.01);
-        manager1.setDateIncorporation(new Date());
-        manager1.setBonusSoccess(5); */
+        Developer developer = developerRespository.findById(5).get(0);
+        project.getDevelopers().add(developer);
 
-        //managerRepository.save(manager1);
+
+        Manager manager1;
+
 
         manager1= managerRepository.findById(6).get(0);
         project.setManager(manager1);
