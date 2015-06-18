@@ -29,15 +29,18 @@ public class Project {
         return manager;
     }
 
-    public void setManager(Manager manager) {
-        this.manager = manager;
-    }
+
 
     @ManyToOne
 
     private Manager manager;
 
     public Project() {
+    }
+
+
+    public void setManager(Manager manager) {
+        this.manager = manager;
     }
 
     public long getId() {
