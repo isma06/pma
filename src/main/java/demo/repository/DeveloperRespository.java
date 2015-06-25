@@ -10,5 +10,4 @@ import java.util.List;
 
 public interface DeveloperRespository extends PagingAndSortingRepository <Developer, Long> {
     List<Developer> findByCategory (@Param("category") Enum category);
-    List<Developer> findById (@Param("id") long id);
 }

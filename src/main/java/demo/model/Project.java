@@ -1,5 +1,7 @@
 package demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -27,6 +29,10 @@ public class Project {
     @NotNull
     private Date endDate;
 
+    @JsonIgnore
+    @ManyToMany(mappedBy = "projects")
+    private Set<Specialty> specialties = new HashSet<>();
+
     public Manager getManager() {
         return manager;
     }
@@ -42,6 +48,9 @@ public class Project {
     public Project() {
     }
 
+    public Set<Specialty> getSpecialties() {
+        return specialties;
+    }
 
     public void setManager(Manager manager) {
         this.manager = manager;

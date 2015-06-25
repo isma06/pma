@@ -12,5 +12,5 @@ import java.util.List;
 public interface ProjectRepository extends PagingAndSortingRepository<Project, Long> {
 
 
-    List<Project> findById (@Param("id") long id);
+        Project findById (@Param("id") long id);
 }

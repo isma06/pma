@@ -1,5 +1,7 @@
 package demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,8 +15,25 @@ public class Developer extends Employee {
     @Enumerated(EnumType.STRING) // decir que este campo es un ENUM de tipo STRING.
     private Category category;
 
-    @ManyToMany(mappedBy = "developers")
+    @JsonIgnore  //ignorar en json
+    @ManyToMany(mappedBy = "developers")  //propietario de la relación
     private Set<Project> projects = new HashSet<>();
+
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "developers")
+    private Set<Specialty> specialties = new HashSet<>();
+
+
+
+
+    public Developer(){
+
+    }
+
+    public Set<Specialty> getSpecialties() {
+        return specialties;
+    }
 
     public void setProjects(Set<Project> projects) {
         this.projects = projects;
@@ -22,11 +41,6 @@ public class Developer extends Employee {
 
     public Set<Project> getProjects() {
         return projects;
-    }
-
-    public Developer(){
-
-
     }
 
     public Category getCategory() {

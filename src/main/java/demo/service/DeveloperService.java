@@ -3,8 +3,10 @@ package demo.service;
 import demo.model.Category;
 import demo.model.Developer;
 import demo.model.Project;
+import demo.model.Specialty;
 import demo.repository.DeveloperRespository;
 import demo.repository.ProjectRepository;
+import demo.repository.SpecialtyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,8 @@ public class DeveloperService {
     private DeveloperRespository developerRepository;
     @Autowired
     ProjectRepository projectRepository;
+
+
 
     public void testDeveloper(){
         Developer junior, senior, architect;
@@ -52,20 +56,17 @@ public class DeveloperService {
 
 
 
-        Developer developer = developerRepository.findById(5).get(0);
-        //Project project = projectRepository.findById(1).get(0);
-
         Project project;
         project = new Project();
         project.setDescription("Proyecto developer");
         project.setStartDate(new Date());
         project.setEndDate(new Date());
 
-        developer.getProjects().add(project);
+        projectRepository.save(project);
 
 
-        Developer jun ;
-        jun= developerRepository.findByCategory(Category.JUNIOR).get(0);
-        System.out.println(jun.toString());
+
+
+
     }
 }
