@@ -1,5 +1,6 @@
 package demo.controller;
 
+import demo.exception.DeveloperException;
 import demo.model.Developer;
 import demo.repository.DeveloperRespository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class DeveloperController {
 
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<Developer> finAll(){
+    public List<Developer> findAll(){
         List<Developer> developers = new ArrayList<Developer>();
         Iterator<Developer> iterator = developerRespository.findAll().iterator();
 
@@ -39,6 +40,24 @@ public class DeveloperController {
         return  developers;
     }
 
+    @RequestMapping(value ="/{id}", method = RequestMethod.GET)
+    public Developer getById (@PathVariable Long id){
+        Developer developer = developerRespository.findOne(id);
+
+        if(developer== null)
+            throw new DeveloperException(id); // lanzar una exception cuando el developer es null.
+
+        return developer;
+    }
 
 
+    @RequestMapping(value ="/{id}", method = RequestMethod.DELETE)
+    public void deleteOne(@PathVariable Long id){
+        Developer developer = developerRespository.findOne(id);
+        if(developer== null)
+            throw new DeveloperException(id);
+         developerRespository.delete(id);;
+
+
+    }
 }
