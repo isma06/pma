@@ -56,8 +56,18 @@ public class DeveloperController {
         Developer developer = developerRespository.findOne(id);
         if(developer== null)
             throw new DeveloperException(id);
-         developerRespository.delete(id);;
+         developerRespository.delete(id);
+    }
 
 
+
+    @RequestMapping(value ="/{id}", method = RequestMethod.PUT)
+    public Developer updateOne(@RequestBody Developer newDeveloper, @PathVariable Long id){
+        Developer developer = developerRespository.findOne(id);
+        if(developer== null)
+            throw new DeveloperException(id);
+
+        newDeveloper= developerRespository.save(newDeveloper);
+        return newDeveloper;
     }
 }
