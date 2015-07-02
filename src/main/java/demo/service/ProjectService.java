@@ -49,10 +49,6 @@ public class ProjectService {
 
 
 
-
-        /*Specialty specialty = specialtyRepository.findOne(1L);
-        project.getSpecialties().add(specialty); */
-
         projectRepository.save(project);
     }
 }
