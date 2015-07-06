@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -24,6 +25,8 @@ public class Developer extends Employee {
     @ManyToMany(mappedBy = "developers")
     private Set<Specialty> specialties = new HashSet<>();
 
+    @OneToMany (mappedBy = "developer")
+    private Set<Review> reviews = new HashSet<>();
 
 
 

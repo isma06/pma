@@ -9,11 +9,13 @@ import demo.repository.ProjectRepository;
 import demo.repository.SpecialtyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 
 
 @Service
+@Transactional
 public class DeveloperService {
     @Autowired
     private DeveloperRespository developerRepository;
@@ -52,17 +54,6 @@ public class DeveloperService {
         developerRepository.save(junior);
         developerRepository.save(senior);
         developerRepository.save(architect);
-
-
-
-
-        Project project;
-        project = new Project();
-        project.setDescription("Proyecto developer");
-        project.setStartDate(new Date());
-        project.setEndDate(new Date());
-
-        projectRepository.save(project);
 
 
 

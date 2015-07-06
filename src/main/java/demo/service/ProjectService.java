@@ -38,13 +38,11 @@ public class ProjectService {
         project.setManager(manager1);
 
 
-        Developer jun, sen ;
-        jun= developerRespository.findByCategory(Category.JUNIOR).get(0);
+        Developer  sen ;
         sen = developerRespository.findByCategory(Category.SENIOR).get(0);
 
-
         project.getDevelopers().add(sen);
-        project.getDevelopers().add(jun);
+
 
 
 
