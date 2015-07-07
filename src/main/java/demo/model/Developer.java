@@ -25,6 +25,7 @@ public class Developer extends Employee {
     @ManyToMany(mappedBy = "developers")
     private Set<Specialty> specialties = new HashSet<>();
 
+    @JsonIgnore
     @OneToMany (mappedBy = "developer")
     private Set<Review> reviews = new HashSet<>();
 
@@ -52,6 +53,10 @@ public class Developer extends Employee {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public Set<Review> getReviews() {
+        return reviews;
     }
 
     @Override
